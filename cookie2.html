@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <link href=“https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css” rel=“stylesheet” integrity=“sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD” crossorigin=“anonymous”>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <style>
+      #cookie-disclaimer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: rgb(0, 0, 0);
+        padding: 20px;
+      }
+      #popup {
+        width: 400px;
+        height: 300px;
+        border: 1px solid #333;
+        box-shadow: 0px 0px 10px #333;
+        border-radius: 10px;
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(255, 255, 255);
+        padding: 20px;
+      }
+      .popup-select {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+      }
+      .popup-select-item {
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="cookie-disclaimer">
+        <p style="color: #fff;">Size daha iyi hizmet sunabilmek için çerezleri kullanıyoruz.</p>
+        <button id="popup-button">Ayarlar</button>
+        <div id="popup">
+          <div class="popup-select">
+            <div class="popup-select-item" id="math-select">
+              <label for="functional-cookies">İşlevsel/Fonksiyonel Çerezler</label>
+              <p> Ziyaretçinin site içerisinde yaptığı seçimleri kaydederek bir sonraki ziyarette hatırlar. Bu tür çerezlerin amacı ziyaretçilere kullanım kolaylığı sağlamaktır.</p>
+            </div>
+            <div class="popup-select-item" id="science-select">
+              <input type="checkbox" id="mandatory-cookies">
+              <label for="mandatory-cookies">Zorunlu/Teknik Çerezler</label>
+              <p>Ziyaret ettiğiniz internet sitesinin düzgün şekilde çalışabilmesi için zorunlu çerezlerdir. Bu tür çerezlerin amacı, sitenin çalışmasını sağlamak yoluyla gerekli hizmet sunmaktır. Örneğin, internet sitesinin güvenli bölümlerine erişmeye, özelliklerini kullanabilmeye, üzerinde gezinti yapabilmeye olanak verir. </p>
+            </div>
+          </div>
+          <button id="popup-close" style="position: absolute; bottom: 0; right: 0;">Kaydet ve Kapat</button>
+        </div>
+        <button id="cookie-accept">Reddet</button>
+        <button id="cookie-decline">Kabul Et</button>
+      </div>
+      
+    <script>
+        document.querySelector('#popup-close').addEventListener('click', function() {
+  document.querySelector('#popup').style.display = 'none';
+});
+      document.querySelector('#popup-button').addEventListener('click', function() {
+        document.cookie = "allowedCookies=math; expires=Thu, 31 Dec 2023 12:00:00 UTC; path=/";
+        document.querySelector('#popup').style.display = 'block';
+      });
+
+      document.querySelector('#science-select').addEventListener('click', function() {
+  document.cookie = "allowedCookies=science; expires=Thu, 31 Dec 2023 12:00:00 UTC; path=/";
+  document.querySelector('#popup').style.display = 'block';
+});
+
+document.querySelector('#cookie-decline').addEventListener('click', function() {
+  document.cookie = "allowedCookies=decline; expires=Thu, 31 Dec 2023 12:00:00 UTC; path=/";
+  document.querySelector('#cookie-disclaimer').style.display = 'none';
+});
+
+document.querySelector('#cookie-accept').addEventListener('click', function() {
+  document.cookie = "allowedCookies=accept; expires=Thu, 31 Dec 2023 12:00:00 UTC; path=/";
+  document.querySelector('#cookie-disclaimer').style.display = 'none';
+});
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
+
